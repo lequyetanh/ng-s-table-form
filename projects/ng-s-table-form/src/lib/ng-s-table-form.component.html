@@ -1,0 +1,38 @@
+<div class="combobox" #divElement (focusout)="onClickOutside()" (mouseover)="mouseOverTable()" (mouseleave)="mouseLeaveTable()">
+  <!--    <div>{{itemSelected | json}}</div>-->
+  <input class="item-select" [title]="itemSelected.name" type="search" (click)="showDropdownList = true" [formControl]="keyword$" />
+  <div class="dropdown-content" *ngIf="showDropdownList" (scroll)="loadMoreItem($event)">
+    <table>
+      <thead>
+        <tr>
+          <ng-container *ngFor="let header of dataTableInput.header">
+            <th class="col-3 text-center">{{ header.label }}</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="listItem.length; else noItem">
+          <ng-container *ngFor="let item of listItem">
+            <tr [class.active]="item.id == itemSelected.id" (click)="changeItemSelected(item, $event)">
+              <ng-container *ngFor="let body of dataTableInput.header">
+                <td
+                  [class]="'col-' + 12 / dataTableInput.header.length"
+                  class="item-info"
+                  [class.col-2]="body.value == 'taxCode'"
+                  [title]="item[body.value]"
+                >
+                  {{ item[body.value] }}
+                </td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </ng-container>
+        <ng-template #noItem>
+          <tr>
+            <td colspan="4">Dữ liệu không tồn tại trong danh mục</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -102,6 +102,37 @@
           }
         }
       }
+    },
+    "ng-s-table-form": {
+      "projectType": "library",
+      "root": "projects/ng-s-table-form",
+      "sourceRoot": "projects/ng-s-table-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-s-table-form/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-s-table-form/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-s-table-form/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-s-table-form/src/test.ts",
+            "tsConfig": "projects/ng-s-table-form/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-s-table-form/karma.conf.js"
+          }
+        }
+      }
     }
   }
 }
