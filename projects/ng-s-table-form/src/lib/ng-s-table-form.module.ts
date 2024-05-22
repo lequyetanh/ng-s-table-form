@@ -4,11 +4,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CurrencyNumberDirective } from './currency-number.directive';
+import { NumberFormatPipe } from './number-format.pipe';
 
 @NgModule({
   declarations: [
     NgSTableFormComponent,
-    CurrencyNumberDirective
+    CurrencyNumberDirective,
+    NumberFormatPipe
   ],
   imports: [
     ReactiveFormsModule,
@@ -16,7 +18,8 @@ import { CurrencyNumberDirective } from './currency-number.directive';
   ],
   exports: [
     NgSTableFormComponent,
-    CurrencyNumberDirective
+    CurrencyNumberDirective,
+    NumberFormatPipe
   ]
 })
 export class NgSTableFormModule { }

@@ -1,5 +1,5 @@
 import * as i0 from '@angular/core';
-import { Injectable, EventEmitter, Component, ViewChild, Input, Output, forwardRef, Directive, HostListener, NgModule } from '@angular/core';
+import { Injectable, EventEmitter, Component, ViewChild, Input, Output, forwardRef, Directive, HostListener, Pipe, NgModule } from '@angular/core';
 import { debounce } from 'lodash';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 import * as i1 from '@angular/forms';
@@ -346,13 +346,68 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
                 args: ['blur', ['$event.target']]
             }] } });
 
+class NumberFormatPipe {
+    getThousandSeparator() {
+        const thousandSeparator = localStorage.getItem('thousand');
+        return thousandSeparator ? thousandSeparator : ',';
+    }
+    transform(value, decimalDigits = 6) {
+        NumberFormatPipe.integerFormat = this.getThousandSeparator();
+        if (!value) {
+            return 0;
+        }
+        if (NumberFormatPipe.integerFormat == ',') {
+            const numericValue = parseFloat(value.toString().replace(/,/g, ''));
+            if (!isNaN(numericValue)) {
+                let formattedValue;
+                // Làm tròn đến 6 chữ số thập phân
+                const roundedValue = parseFloat(numericValue.toFixed(decimalDigits));
+                if (roundedValue % 1 === 0) {
+                    // Nếu không có phần thập phân (số là số nguyên), không hiển thị phần thập phân
+                    formattedValue = roundedValue.toLocaleString('en-US', { maximumFractionDigits: 0 });
+                }
+                else {
+                    // Hiển thị phần thập phân với số chữ số quy định
+                    formattedValue = roundedValue.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: decimalDigits });
+                }
+                return formattedValue;
+            }
+        }
+        else {
+            // Convert the number to a string and split it into parts
+            const newValue = value.toFixed(decimalDigits).replace(/(\.\d*?)0+$/, '$1');
+            const parts = newValue.split('.');
+            // Format the integer part with commas
+            parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            // Join the parts back together
+            if (parts[1]) {
+                return parts.join(',');
+            }
+            else {
+                return parts[0];
+            }
+        }
+        return '';
+    }
+}
+NumberFormatPipe.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: NumberFormatPipe, deps: [], target: i0.ɵɵFactoryTarget.Pipe });
+NumberFormatPipe.ɵpipe = i0.ɵɵngDeclarePipe({ minVersion: "14.0.0", version: "14.3.0", ngImport: i0, type: NumberFormatPipe, name: "numberFormatString" });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: NumberFormatPipe, decorators: [{
+            type: Pipe,
+            args: [{
+                    name: 'numberFormatString'
+                }]
+        }] });
+
 class NgSTableFormModule {
 }
 NgSTableFormModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: NgSTableFormModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
 NgSTableFormModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "14.3.0", ngImport: i0, type: NgSTableFormModule, declarations: [NgSTableFormComponent,
-        CurrencyNumberDirective], imports: [ReactiveFormsModule,
+        CurrencyNumberDirective,
+        NumberFormatPipe], imports: [ReactiveFormsModule,
         CommonModule], exports: [NgSTableFormComponent,
-        CurrencyNumberDirective] });
+        CurrencyNumberDirective,
+        NumberFormatPipe] });
 NgSTableFormModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: NgSTableFormModule, imports: [ReactiveFormsModule,
         CommonModule] });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: NgSTableFormModule, decorators: [{
@@ -360,7 +415,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
             args: [{
                     declarations: [
                         NgSTableFormComponent,
-                        CurrencyNumberDirective
+                        CurrencyNumberDirective,
+                        NumberFormatPipe
                     ],
                     imports: [
                         ReactiveFormsModule,
@@ -368,7 +424,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
                     ],
                     exports: [
                         NgSTableFormComponent,
-                        CurrencyNumberDirective
+                        CurrencyNumberDirective,
+                        NumberFormatPipe
                     ]
                 }]
         }] });
@@ -381,5 +438,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { CurrencyNumberDirective, NgSTableFormComponent, NgSTableFormModule, NgSTableFormService };
+export { CurrencyNumberDirective, NgSTableFormComponent, NgSTableFormModule, NgSTableFormService, NumberFormatPipe };
 //# sourceMappingURL=ng-s-table-form.mjs.map
