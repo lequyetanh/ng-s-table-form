@@ -1,0 +1,34 @@
+{
+  "name": "ng-s-table-form",
+  "version": "0.0.7",
+  "peerDependencies": {
+    "@angular/common": "^14.2.0",
+    "@angular/core": "^14.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "module": "fesm2015/ng-s-table-form.mjs",
+  "es2020": "fesm2020/ng-s-table-form.mjs",
+  "esm2020": "esm2020/ng-s-table-form.mjs",
+  "fesm2020": "fesm2020/ng-s-table-form.mjs",
+  "fesm2015": "fesm2015/ng-s-table-form.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/ng-s-table-form.mjs",
+      "es2020": "./fesm2020/ng-s-table-form.mjs",
+      "es2015": "./fesm2015/ng-s-table-form.mjs",
+      "node": "./fesm2015/ng-s-table-form.mjs",
+      "default": "./fesm2020/ng-s-table-form.mjs"
+    }
+  },
+  "publishConfig": {
+    "registry": "http://10.100.110.234:8081/repository/sds-ep-ngTable/"
+  },
+  "sideEffects": false
+}

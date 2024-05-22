@@ -1,11 +1,14 @@
 {
   "name": "ng-s-table-form",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "registry": "http://10.100.110.234:8081/repository/sds-ep-ngTable/"
   }
 }

@@ -1,0 +1,34 @@
+import { ElementRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import * as i0 from "@angular/core";
+export declare class CurrencyNumberDirective implements ControlValueAccessor {
+    private el;
+    numberRound: any;
+    maxValue?: number;
+    minValue?: number;
+    private static integerFormat;
+    private static decimalFormat;
+    private static reGexGetIntegerSymbol;
+    constructor(el: ElementRef);
+    previousValue: any;
+    needOnChange: any;
+    private formattedValue;
+    private onChange;
+    private onTouched;
+    ngOnInit(): void;
+    getThousandSeparator(): any;
+    getDecimalSeparator(): any;
+    roundNumber(value: string): string;
+    onInput(event: InputEvent): void;
+    registerOnChange(fn: (value: number) => void): void;
+    registerOnTouched(fn: () => void): void;
+    setDisabledState?(isDisabled: boolean): void;
+    onPaste(event: ClipboardEvent): void;
+    onKeyPress(event: KeyboardEvent): void;
+    onKeyDown(event: KeyboardEvent): void;
+    onFocus(target: HTMLInputElement): void;
+    private formatNumber;
+    writeValue(value: number): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CurrencyNumberDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CurrencyNumberDirective, "[jhiCurrencyNumber]", never, { "numberRound": "numberRound"; "maxValue": "maxvalue"; "minValue": "minvalue"; }, {}, never, never, false>;
+}

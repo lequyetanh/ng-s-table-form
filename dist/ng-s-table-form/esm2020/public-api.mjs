@@ -1,0 +1,8 @@
+/*
+ * Public API Surface of ng-s-table-form
+ */
+export * from './lib/ng-s-table-form.service';
+export * from './lib/ng-s-table-form.component';
+export * from './lib/ng-s-table-form.module';
+export * from './lib/currency-number.directive';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25nLXMtdGFibGUtZm9ybS9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsK0JBQStCLENBQUM7QUFDOUMsY0FBYyxpQ0FBaUMsQ0FBQztBQUNoRCxjQUFjLDhCQUE4QixDQUFDO0FBQzdDLGNBQWMsaUNBQWlDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIG5nLXMtdGFibGUtZm9ybVxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vbGliL25nLXMtdGFibGUtZm9ybS5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL25nLXMtdGFibGUtZm9ybS5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvbmctcy10YWJsZS1mb3JtLm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9jdXJyZW5jeS1udW1iZXIuZGlyZWN0aXZlJztcbiJdfQ==
