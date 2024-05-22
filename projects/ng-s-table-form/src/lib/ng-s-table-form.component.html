@@ -1,4 +1,4 @@
-<div class="combobox" #divElement (focusout)="onClickOutside()" (mouseover)="mouseOverTable()" (mouseleave)="mouseLeaveTable()">
+<div [ngStyle]="{ 'pointer-events': disableForm ? 'none' : '' }" class="combobox" #divElement (focusout)="onClickOutside()" (mouseover)="mouseOverTable()" (mouseleave)="mouseLeaveTable()">
   <!--    <div>{{itemSelected | json}}</div>-->
   <input class="item-select" [title]="itemSelected.name" type="search" (click)="showDropdownList = true" [formControl]="keyword$" />
   <div class="dropdown-content" *ngIf="showDropdownList" (scroll)="loadMoreItem($event)">

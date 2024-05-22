@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 
 
 @Component({
-  selector: 'lib-ng-s-table-form',
+  selector: 'ng-s-table-form',
   templateUrl: './ng-s-table-form.component.html',
   styleUrls: ['./ng-s-table-form.component.scss']
 })
@@ -15,6 +15,7 @@ export class NgSTableFormComponent implements OnInit {
   @Input() listItemFilter;
   @Input() itemSelected;
   @Input() dataTableInput;
+  @Input() disableForm;
 
   @Output() loadMoreItemEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() changeItemSelectedEvent: EventEmitter<any> = new EventEmitter<any>();
